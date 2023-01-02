@@ -33,11 +33,11 @@ function configureBot(bot) {
         for (const elem of entityName) {
             countBefore += bot.getInventoryItemQuantity(elem);    
         }
-        bot.chat('help');
 
         // Ensure that if the Bot fails to gather the dropped item,
         // it will try collecting another until its inventory reflects one has been picked up
-        while (bot.getInventoryItemQuantity(entityName) <= countBefore) {
+        let countAfter = countBefore;
+        while (countAfter <= countBefore) {
             const foundEntity = await bot.findBlocks(entityName, { maxDistance: 80 });
             if (foundEntity) {
                 // If the Bot located one, then go chop it
@@ -60,6 +60,11 @@ function configureBot(bot) {
                 // }
                 bot.chat('Cannot find block');
                 return;
+            }
+
+            countAfter = 0
+            for (const elem of entityName) {
+                countAfter += bot.getInventoryItemQuantity(elem);    
             }
         }
     }
