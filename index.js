@@ -54,7 +54,7 @@ function configureBot(bot) {
                     skipCurrentEntity = false;
                 }
             } else {
-                skipCurrentEntity = true;
+                skipCurrentEntity = false;
                 // If the Bot didn't find any nearby,
                 // then allow it to wander a bit and look again.
                 // This loop makes sure it completes the 'wander' movement.
