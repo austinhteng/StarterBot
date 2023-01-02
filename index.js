@@ -58,10 +58,10 @@ function configureBot(bot) {
                 // If the Bot didn't find any nearby,
                 // then allow it to wander a bit and look again.
                 // This loop makes sure it completes the 'wander' movement.
-                let didWander = false;
-                while (!didWander) {
-                    didWander = await bot.wander();
-                }
+                // let didWander = false;
+                // while (!didWander) {
+                //     didWander = await bot.wander();
+                // }
             }
         }
     }
