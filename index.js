@@ -51,6 +51,7 @@ function configureBot(bot) {
                 // while (!didWander) {
                 //     didWander = await bot.wander();
                 // }
+                bot.chat('Cannot find block');
             }
         }
     }
