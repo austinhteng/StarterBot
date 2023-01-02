@@ -14,6 +14,11 @@ function configureBot(bot) {
         await gatherEntity('coal_ore')
     }
 
+    // Find and break chest
+    async function gatherChest() {
+        await gatherEntity('chest')
+    }
+
     // This function will make the Bot chop + pick up a Spruce Log.
     async function gatherLog() {
         await gatherEntity('spruce_log')
@@ -141,6 +146,9 @@ function configureBot(bot) {
         //     }
         //     await gatherCoal();
         // }
+        while (true) {
+            await gatherChest();
+        }
 
         // Once the Bot has 100 points, announce it in the chat
         bot.chat(`I reached my goal! I have ${oreCollected} coal_ore and ${applesCollected} apples`);
