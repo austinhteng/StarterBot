@@ -29,7 +29,11 @@ function configureBot(bot) {
         // There are so many things around the spawn area that it can
         // simply try to chop a different one
         let skipCurrentEntity = false;
-        const countBefore = bot.getInventoryItemQuantity(entityName);
+        let countBefore = 0
+        for (const elem of entityName) {
+            countBefore += bot.getInventoryItemQuantity(entityName);    
+        }
+
 
         // Ensure that if the Bot fails to gather the dropped item,
         // it will try collecting another until its inventory reflects one has been picked up
