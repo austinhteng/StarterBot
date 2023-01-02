@@ -21,6 +21,7 @@ function configureBot(bot) {
 
     async function breakDoor() {
         await gatherEntity('spruce_door')
+        return true;
     }
 
     // This function will make the Bot chop + pick up a Spruce Log.
@@ -48,8 +49,8 @@ function configureBot(bot) {
                     // If anything prevents the Bot from breaking the block,
                     // then find the next-closest and try gathering that instead.
 
-                    await breakDoor();
-                    skipCurrentEntity = true;
+                    let foundDoor = await breakDoor();
+                    skipCurrentEntity = foundDoor;
                 } else {
                     skipCurrentEntity = false;
                 }
