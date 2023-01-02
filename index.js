@@ -8,7 +8,7 @@
 function configureBot(bot) {
 
     bot.setDebug(true);
-    
+
     // This function will make the Bot chop + pick up a Coal Ore.
     async function gatherCoal() {
         await gatherEntity('coal_ore')
@@ -41,10 +41,10 @@ function configureBot(bot) {
         // Ensure that if the Bot fails to gather the dropped item,
         // it will try collecting another until its inventory reflects one has been picked up
         while (bot.getInventoryItemQuantity(entityName) <= countBefore) {
-            const foundEntity = await bot.findBlock(entityName, {skipClosest: skipCurrentEntity});
+            const foundEntity = await bot.findBlock(entityName, { skipClosest: skipCurrentEntity });
             if (foundEntity) {
                 // If the Bot located one, then go chop it
-                const success = await bot.findAndDigBlock(entityName, {skipClosest: skipCurrentEntity});
+                const success = await bot.findAndDigBlock(entityName, { skipClosest: skipCurrentEntity });
                 if (!success) {
                     // If anything prevents the Bot from breaking the block,
                     // then find the next-closest and try gathering that instead.
@@ -56,7 +56,6 @@ function configureBot(bot) {
                 }
             } else {
                 skipCurrentEntity = false;
-                return;
                 // If the Bot didn't find any nearby,
                 // then allow it to wander a bit and look again.
                 // This loop makes sure it completes the 'wander' movement.
@@ -127,7 +126,7 @@ function configureBot(bot) {
 
         // Finally, craft the pickaxes
         // Locate a spot to place the craftingTable, place it, then stand next to it
-        const ground = bot.findBlock('grass', {onlyFindTopBlocks: true, maxDistance: 20}) || bot.findBlock('dirt', { onlyFindTopBlocks: true, maxDistance: 20});
+        const ground = bot.findBlock('grass', { onlyFindTopBlocks: true, maxDistance: 20 }) || bot.findBlock('dirt', { onlyFindTopBlocks: true, maxDistance: 20 });
         await bot.placeBlock('crafting_table', ground);
         const placedTable = await bot.findBlock('crafting_table');
         await bot.approachBlock(placedTable);
@@ -145,7 +144,7 @@ function configureBot(bot) {
 
         let oreCollected = bot.getInventoryItemQuantity('coal_ore');
         let applesCollected = bot.getInventoryItemQuantity('apple');
-        
+
         // NOTE: This is an example of a score check.  In a real bot you likely wouldn't do this and would keep going until the match ends.
         // while (oreCollected + applesCollected < 100) {
         //     if (!bot.inventoryContainsItem('_pickaxe', {partialMatch: true})) {
