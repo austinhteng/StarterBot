@@ -36,6 +36,7 @@ function configureBot(bot) {
 
         // Ensure that if the Bot fails to gather the dropped item,
         // it will try collecting another until its inventory reflects one has been picked up
+        bot.chat('start search')
         let countAfter = countBefore;
         while (countAfter <= countBefore) {
             const foundEntity = await bot.findBlocks(entityName, { maxDistance: 80 });
@@ -66,6 +67,7 @@ function configureBot(bot) {
             for (const elem of entityName) {
                 countAfter += bot.getInventoryItemQuantity(elem);    
             }
+            bot.chat('finished cycle')
         }
     }
 
