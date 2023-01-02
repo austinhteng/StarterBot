@@ -31,9 +31,9 @@ function configureBot(bot) {
         let skipCurrentEntity = false;
         let countBefore = 0
         for (const elem of entityName) {
-            countBefore += bot.getInventoryItemQuantity(entityName);    
+            countBefore += bot.getInventoryItemQuantity(elem);    
         }
-
+        bot.chat('help');
 
         // Ensure that if the Bot fails to gather the dropped item,
         // it will try collecting another until its inventory reflects one has been picked up
