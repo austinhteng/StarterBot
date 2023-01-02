@@ -39,7 +39,7 @@ function configureBot(bot) {
         bot.chat('start search')
         let countAfter = countBefore;
         while (countAfter <= countBefore) {
-            const foundEntity = await bot.findBlocks(entityName, { maxDistance: 80 });
+            const foundEntity = await bot.findBlocks({blockNames: entityName, maxDistance: 80 });
             if (foundEntity) {
                 // If the Bot located one, then go chop it
                 const success = await bot.findAndDigBlock(foundEntity, { maxDistance: 80 });
