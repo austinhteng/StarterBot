@@ -134,13 +134,13 @@ function configureBot(bot) {
         let applesCollected = bot.getInventoryItemQuantity('apple');
         
         // NOTE: This is an example of a score check.  In a real bot you likely wouldn't do this and would keep going until the match ends.
-        while (oreCollected + applesCollected < 100) {
-            if (!bot.inventoryContainsItem('_pickaxe', {partialMatch: true})) {
-                // craft pickaxes if inventory doesn't have any
-                await craftPickAxes();
-            }
-            await gatherCoal();
-        }
+        // while (oreCollected + applesCollected < 100) {
+        //     if (!bot.inventoryContainsItem('_pickaxe', {partialMatch: true})) {
+        //         // craft pickaxes if inventory doesn't have any
+        //         await craftPickAxes();
+        //     }
+        //     await gatherCoal();
+        // }
 
         // Once the Bot has 100 points, announce it in the chat
         bot.chat(`I reached my goal! I have ${oreCollected} coal_ore and ${applesCollected} apples`);
