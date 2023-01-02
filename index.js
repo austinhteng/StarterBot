@@ -31,7 +31,7 @@ function configureBot(bot) {
         // Ensure that if the Bot fails to gather the dropped item,
         // it will try collecting another until its inventory reflects one has been picked up
         while (bot.getInventoryItemQuantity(entityName) <= countBefore) {
-            const foundEntity = await bot.findBlock(entityName, {maxDistance: 80});
+            const foundEntity = await bot.findBlock(entityName, { maxDistance: 80 });
             if (foundEntity) {
                 // If the Bot located one, then go chop it
                 const success = await bot.findAndDigBlock(entityName, { maxDistance: 80 });
@@ -73,7 +73,9 @@ function configureBot(bot) {
         let applesCollected = bot.getInventoryItemQuantity('apple');
 
         while (true) {
+            bot.chat('Looking for chests');
             await gatherChest();
+
         }
 
         // Once the Bot has 100 points, announce it in the chat
