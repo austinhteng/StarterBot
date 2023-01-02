@@ -20,7 +20,7 @@ function configureBot(bot) {
     }
 
     async function breakDoor() {
-        break gatherEntity('spruce_door')
+        await gatherEntity('spruce_door')
     }
 
     // This function will make the Bot chop + pick up a Spruce Log.
