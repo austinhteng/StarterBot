@@ -14,6 +14,12 @@ function configureBot(bot) {
         await gatherEntity('chest')
     }
 
+    async function gatherVillage() {
+        let targets = ['chest', 'poppy', 'bell']
+
+        await gatherEntity(targets)
+    }
+
     async function breakDoor() {
         await gatherEntity('spruce_door')
         return true;
@@ -31,10 +37,10 @@ function configureBot(bot) {
         // Ensure that if the Bot fails to gather the dropped item,
         // it will try collecting another until its inventory reflects one has been picked up
         while (bot.getInventoryItemQuantity(entityName) <= countBefore) {
-            const foundEntity = await bot.findBlock(entityName, { maxDistance: 80 });
+            const foundEntity = await bot.findBlocks(entityName, { maxDistance: 80 });
             if (foundEntity) {
                 // If the Bot located one, then go chop it
-                const success = await bot.findAndDigBlock(entityName, { maxDistance: 80 });
+                const success = await bot.findAndDigBlock(foundEntity, { maxDistance: 80 });
                 if (!success) {
                     // If anything prevents the Bot from breaking the block,
                     // then find the next-closest and try gathering that instead.
