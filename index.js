@@ -47,8 +47,10 @@ function configureBot(bot) {
                     // If anything prevents the Bot from breaking the block,
                     // then find the next-closest and try gathering that instead.
                     // skipCurrentEntity = true;
+                    bot.chat('fail')
                 } else {
                     // skipCurrentEntity = false;
+                    bot.chat('success')
                 }
             } else {
                 // skipCurrentEntity = false;
