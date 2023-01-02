@@ -31,10 +31,10 @@ function configureBot(bot) {
         // Ensure that if the Bot fails to gather the dropped item,
         // it will try collecting another until its inventory reflects one has been picked up
         while (bot.getInventoryItemQuantity(entityName) <= countBefore) {
-            const foundEntity = await bot.findBlock(entityName);
+            const foundEntity = await bot.findBlock(entityName, {maxDistance: 320});
             if (foundEntity) {
                 // If the Bot located one, then go chop it
-                const success = await bot.findAndDigBlock(entityName);
+                const success = await bot.findAndDigBlock(entityName, { maxDistance: 320 });
                 if (!success) {
                     // If anything prevents the Bot from breaking the block,
                     // then find the next-closest and try gathering that instead.
