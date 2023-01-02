@@ -48,7 +48,7 @@ function configureBot(bot) {
                     // If anything prevents the Bot from breaking the block,
                     // then find the next-closest and try gathering that instead.
 
-                    await breakDoor() {}
+                    await breakDoor();
                     skipCurrentEntity = true;
                 } else {
                     skipCurrentEntity = false;
