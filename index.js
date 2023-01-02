@@ -20,10 +20,7 @@ function configureBot(bot) {
         await gatherEntity(targets)
     }
 
-    async function breakDoor() {
-        await gatherEntity('spruce_door')
-        return true;
-    }
+
 
     // This function will make the Bot chop + pick up a named entity.
     async function gatherEntity(entityName) {
@@ -80,8 +77,8 @@ function configureBot(bot) {
         let applesCollected = bot.getInventoryItemQuantity('apple');
 
         while (true) {
-            bot.chat('Looking for chests');
-            await gatherChest();
+            bot.chat('Looking for points');
+            await gatherVillage();
 
         }
 
