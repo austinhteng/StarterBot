@@ -64,7 +64,7 @@ function configureBot(bot) {
                 bot.chat('Cannot find block');
                 return;
             }
-
+ 
             countAfter = 0
             for (const elem of entityName) {
                 countAfter += bot.getInventoryItemQuantity(elem);    
