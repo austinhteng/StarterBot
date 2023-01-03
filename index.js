@@ -43,7 +43,7 @@ function configureBot(bot) {
             if (foundEntity) {
                 // If the Bot located one, then go chop it
                 let success = await bot.approachBlock(foundEntity)
-                success = success && await bot.digBlock(foundEntity)
+                // success = success && await bot.digBlock(foundEntity)
                 
                 
                 if (!success) {
