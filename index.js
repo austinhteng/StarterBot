@@ -42,7 +42,7 @@ function configureBot(bot) {
             const foundEntity = await bot.findBlocks({blockNames: entityName, maxDistance: 80 }).shift();
             if (foundEntity) {
                 // If the Bot located one, then go chop it
-                let success = await bot.approachBlock(foundEntity)
+                let success = await bot.approachAndDigBlock(foundEntity.result)
                 // success = success && await bot.digBlock(foundEntity)
                 
                 
