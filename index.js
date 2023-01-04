@@ -39,7 +39,8 @@ function configureBot(bot) {
         bot.chat('start search')
         let countAfter = countBefore;
         while (countAfter <= countBefore) {
-            const foundEntity = await bot.findBlocks({blockNames: entityName, maxDistance: 120 }).shift();
+            //120 reaches both villages through connecting poppies
+            const foundEntity = await bot.findBlocks({blockNames: entityName, maxDistance: 30 }).shift();
             if (foundEntity) {
                 // If the Bot located one, then go chop it
                 let success = await bot.approachAndDigBlock(foundEntity.result)
