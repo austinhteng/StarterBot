@@ -39,7 +39,7 @@ function configureBot(bot) {
         bot.chat('start search')
         let countAfter = countBefore;
         while (countAfter <= countBefore) {
-            const foundEntity = await bot.findBlocks({blockNames: entityName, maxDistance: 80 }).shift();
+            const foundEntity = await bot.findBlocks({blockNames: entityName, maxDistance: 120 }).shift();
             if (foundEntity) {
                 // If the Bot located one, then go chop it
                 let success = await bot.approachAndDigBlock(foundEntity.result)
@@ -49,10 +49,10 @@ function configureBot(bot) {
                 if (!success) {
                     // If anything prevents the Bot from breaking the block,
                     // then find the next-closest and try gathering that instead.
-                    skipCurrentEntity = true;
+                    // skipCurrentEntity = true;
                     bot.chat('fail')
                 } else {
-                    skipCurrentEntity = false;
+                    // skipCurrentEntity = false;
                     bot.chat('success')
                 }
             } else {
@@ -65,7 +65,8 @@ function configureBot(bot) {
                 //     didWander = await bot.wander();
                 // }
                 bot.chat('Cannot find block');
-                return;
+                let dest = GoalBlock(70, 67, -110);
+                await bot.pathfinder.goto(dest);
             }
  
             countAfter = 0
